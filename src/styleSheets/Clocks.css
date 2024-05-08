@@ -1,0 +1,22 @@
+.clock{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.clock__btn{
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    transition: .5s;
+}
+.clock__city{
+    font-size: 20px;
+}
+.clock__date{
+    font-size: 25px;
+}
+.clock__btn:hover{
+    color: #000;
+}

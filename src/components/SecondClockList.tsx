@@ -1,25 +1,23 @@
-import { useState } from 'react'
 import '../styleSheets/SecondClocksList.css'
-import PopUpWindow from './PopUpWindow';
+import Clocks from './Clocks'
 
-const SecondClockList = () => {
+interface Props {
+  appearWindow: () => void
+}
 
-    const [showWindow, setShowWindow] = useState(false);
-
-    const appearWindow = () => {
-        setShowWindow(true);
-    }
-
-    const disappearWindow = () => {
-        setShowWindow(false);
-    }
+const SecondClockList: React.FC<Props> = ({appearWindow}) => {
+  
   return (
     <>
-        <section className="listClocks">
+        <section className="clocks">
           <p>Clocks in the world</p>
-          <button onClick={appearWindow}>Add Clock</button>
+          <button onClick={appearWindow} className='clocks__add'>Add Clock</button>
         </section>
-        {showWindow ? <PopUpWindow disappear={disappearWindow}/> : null}
+        <aside className='list'>
+          <Clocks />
+          <Clocks />
+          <Clocks />
+        </aside>
     </>
   )
 }

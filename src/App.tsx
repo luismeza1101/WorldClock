@@ -1,21 +1,28 @@
+import { useState } from 'react';
 import './App.css'
 import MainClock from './components/MainClock';
 import SecondClockList from './components/SecondClockList';
+import PopUpWindow from './components/PopUpWindow';
 
 function App() {
 
-  const obtenerHora = async () =>{
-    const res = await fetch("http://worldtimeapi.org/api/timezone/America/New_York");
-    const data = await res.json()
+  const [showWindow, setShowWindow] = useState(false);
 
-    console.log(data)
-  }
+    const appearWindow = () => {
+        setShowWindow(true);
+    }
 
-  obtenerHora();
+    const disappearWindow = () => {
+        setShowWindow(false);
+    }
+
   return (
-    <div className='hero'>
-      <MainClock /> 
-      <SecondClockList />
+    <div className='bodyContainer'>
+      <main className='hero'>
+        <MainClock /> 
+        <SecondClockList appearWindow={appearWindow}/>
+      </main>
+      {showWindow ? <PopUpWindow disappear={disappearWindow}/> : null}
     </div>
   )
 }

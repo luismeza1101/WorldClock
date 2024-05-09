@@ -1,9 +1,15 @@
 import '../styleSheets/MainClock.css'
 
-const MainClock = () => {
+interface Props {
+  hours: string
+  minutes: string
+  seconds: string
+}
+
+const MainClock: React.FC<Props> = ({hours, minutes, seconds}) => {
   return (
     <section className="mainClock">
-      00:00:00
+      {`${hours}:${minutes}:${seconds}`}
     </section>
   )
 }

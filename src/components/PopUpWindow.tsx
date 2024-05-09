@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import '../styleSheets/PopUpWindow.css'
 
 interface Props {
@@ -5,6 +6,9 @@ interface Props {
 }
 
 const PopUpWindow: React.FC<Props> = ({disappear}) => {
+
+  const cityName = useRef<HTMLInputElement>(null)
+
   return (
     <div className='container'>
       <div className='window'>

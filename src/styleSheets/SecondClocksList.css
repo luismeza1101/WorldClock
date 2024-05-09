@@ -25,3 +25,14 @@
     padding: 30px;
     border-radius: 10px;
 }
+.list__info{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 30px;
+    color: #000;
+    text-shadow: 
+    -1px -1px 0 #fff,  
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff;
+}

@@ -11,11 +11,11 @@ function App() {
   const [showWindow, setShowWindow] = useState(false);
   // const [clocks, setClocks] = useState<ClockCity[]>([]);
 
-  // const dataHora = async() => {
-  //   const res = await fetch("http://worldtimeapi.org/api/timezone");
-  //   const data = await res.json()
-  //   console.log(data)
-  // }
+  const dataHora = async() => {
+    const res = await fetch("http://worldtimeapi.org/api/timezone");
+    const data = await res.json()
+    console.log(data)
+  }
   // dataHora();
 
     const appearWindow = () => {
@@ -37,7 +37,7 @@ function App() {
         <MainClock /> 
         <SecondClockList appearWindow={appearWindow} citys={arrayCitys} setArrayCitys={setArrayCitys}/>
       </main>
-      {showWindow ? <PopUpWindow disappear={disappearWindow}/> : null}
+      {showWindow ? <PopUpWindow disappear={disappearWindow} setArrayCitys={setArrayCitys} arrayCitys={arrayCitys}/> : null}
     </div>
   )
 }

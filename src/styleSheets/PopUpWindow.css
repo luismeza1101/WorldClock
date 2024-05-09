@@ -11,24 +11,37 @@
 .window {
   background-color: #2b2b2b;
   box-shadow: 4px 6px 9px 5px rgba(0, 0, 0, 0.75);
-  width: 350px;
-  height: 150px;
+  width: 380px;
+  height: 180px;
   font-size: 1.5em;
+  border-radius: 20px;
 }
 .form {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   gap: 15px;
+  position: relative;
+}
+.form__out{
+  background-color: transparent;
+  color: #fff;
+  font-size: 30px;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  right: 25px;
+  top: 10px;
 }
 .data {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
+  padding: 20px;
 }
-.data__city {
+.data__city, .zones {
   padding: 2px 7px;
   font-size: 15px;
   border-radius: 5px;

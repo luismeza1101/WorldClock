@@ -12,7 +12,6 @@ const Clocks: React.FC<Props> = ({city, setArrayCitys, citys}) => {
 
     const deleteCity = () => {
         const newArray = citys.filter(cityToRemove => !(cityToRemove.includes(city)))
-        console.log(newArray)
         setArrayCitys(newArray)
     }
   return (

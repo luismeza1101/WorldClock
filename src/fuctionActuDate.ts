@@ -14,5 +14,23 @@ export const actuDate = (
   setSeconds(actualSeconds);
 };
 
+export const dataHora = async(place: string) => {
+  try {
+    const res = await fetch(`http://worldtimeapi.org/api/timezone/${place}`);
+    const data = await res.json()
+    return data.utc_offset
+  } catch (error) {
+    alert('Hubo un error entre la ciudad y el continente')
+    throw error
+  }
+}
+
+export const calcTimeCountrys = (offset: string) => {
+  const hora = offset.slice(1, 3);
+  const dateActual = new Date();
+  const horaLocal = new Date(dateActual.getTime() + (parseInt(hora) * 3600000))
+  return horaLocal;
+}
+
 
 

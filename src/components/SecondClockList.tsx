@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react'
 import '../styleSheets/SecondClocksList.css'
 import { CountryCity } from '../types'
 import Clocks from './Clocks'
+import { dataHora } from '../fuctionActuDate'
 
 interface Props {
   appearWindow: () => void
@@ -10,7 +12,27 @@ interface Props {
 
 const SecondClockList: React.FC<Props> = ({appearWindow, citys, setArrayCitys}) => {
 
-  const onlyCity: CountryCity[] = citys.map(city => {
+  const [offsets, setOffsets] = useState<string[]>([]);
+  
+  useEffect(() => {
+    const fetchDataForCities = async () => {
+      try {
+        const promises: Promise<string>[] = citys.map(city => dataHora(city));
+        const results = await Promise.all(promises);
+        return results
+      } catch (error) {
+        console.error('Hubo un error al obtener los datos:', error);
+      }
+    };
+    
+    fetchDataForCities().then(results => {
+      if (results !== undefined) {
+        setOffsets(results);
+      }
+    });
+  }, [citys]);
+  
+  const onlyCity: string[] = citys.map(city => {
     let data = city.split('/')
     return data[1]
   }) 
@@ -28,7 +50,7 @@ const SecondClockList: React.FC<Props> = ({appearWindow, citys, setArrayCitys}) 
             <p>Delete</p>
           </div>
           {onlyCity.map((city, index) => (
-            <Clocks city={city} key={index} setArrayCitys={setArrayCitys} citys={citys}/>
+            <Clocks city={city} key={index} setArrayCitys={setArrayCitys} citys={citys} date={offsets[index]}/>
           ))}
         </aside>
     </>
